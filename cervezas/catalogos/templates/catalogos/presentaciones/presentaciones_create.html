@@ -1,0 +1,14 @@
+<form method="post" action="{% url 'presentaciones_create' %}" class="js-presentacion-create-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <h4 class="modal-title">Agregar nueva presentación</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        {% include 'catalogos/form.html' %}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+        <button type="submit" class="btn btn-success">Agregar Presentación</button>
+    </div>
+</form>

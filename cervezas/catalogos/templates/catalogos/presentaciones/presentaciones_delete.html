@@ -1,0 +1,25 @@
+<form method="post" action="{% url 'presentaciones_delete' presentacion.pk %}" class="js-presentacion-delete-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <h5 class="modal-title">Confirma la eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">¡Peligro!</h4>
+            <p>¿Está seguro que desea eliminar la presentación: <strong>
+                {{presentacion.presentacion}}</strong> para siempre?</p>
+            <hr>
+            <p class="mb-0">Se eliminarán los productos asociados a esta presentación.</p>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-bs-dismiss="modal">
+            Cerrar
+        </button> 
+        <button type="submit" class="btn btn-danger">
+            Eliminar Presentación
+        </button>
+    </div>
+</form>

@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block javascript %}
+    <script src="{% static 'catalogos/js/catalogos.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container py-4">
+      <header class="pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          <span class="fs-4">Catálogos</span>
+        </a>
+      </header>
+      <div id="alert"></div>
+      <div class="p-4 mb-4 bg-light rounded-3">
+        <!-- =============TITLES TABS==========-->
+        <div class="col-py-2">
+            
+            <ul class="nav nav-tabs" id="catalogosTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="marcas-tab" 
+                            data-bs-toggle="tab" data-bs-target="#marcas" 
+                            type="button" role="tab" aria-controls="marcas" 
+                            aria-selected="true">
+                            Marcas
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="presentaciones-tab" 
+                            data-bs-toggle="tab" data-bs-target="#presentaciones" 
+                            type="button" role="tab" aria-controls="presetaciones" 
+                            aria-selected="false">
+                            Presentaciones
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <!-- ==========END TITLES TABS==========-->
+        <div class="tab-content" id="catalogosTabContent">
+            <!-- ==========TAB CONTENT MARCAS==========-->
+            <div class="tab-pane fade show active" 
+                    id="marcas" 
+                    role="tabpanel" 
+                    aria-labelledby="marcas-tab">
+                    <div class="row justify-content-end">
+                        <div class="col-2 p-2">
+                            <button 
+                                type="button" 
+                                class="btn btn-primary js-create-marca"
+                                data-url="{% url 'marcas_create' %}">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <table class="table" id="marca-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Marca</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% include 'catalogos/marcas/marcas_list.html' %}
+                        </tbody>
+                    </table>
+            </div>
+             <!-- ========== END TAB CONTENT MARCAS==========-->
+             <!-- ==========TAB CONTENT PRESENTACION==========-->
+            <div class="tab-pane fade" 
+                id="presentaciones" 
+                role="tabpanel" 
+                aria-labelledby="presentaciones-tab">
+                <div class="row justify-content-end">
+                        <div class="col-2 p-2">
+                            <button 
+                                type="button" 
+                                class="btn btn-primary js-create-presentacion"
+                                data-url="{% url 'presentaciones_create' %}">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table" id="presentacion-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Presentación</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% include 'catalogos/presentaciones/presentaciones_list.html' %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             <!-- ==========END TAB CONTENT PRESENTACION==========-->
+      </div>
+  
+      <footer class="pt-3 mt-4 text-muted border-top">
+        &copy; 2021
+      </footer>
+    </div>
+</main>
+ <!-- ==========MODAL DE ACCIONES==========-->
+<div class="modal fade" data-bs-backdrop="static" id="modal-acciones" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+ <!-- ==========END MODAL ACCIONES==========-->
+{% endblock %}

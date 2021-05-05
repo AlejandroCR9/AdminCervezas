@@ -1,0 +1,24 @@
+{% for producto in productos %}
+    <tr>
+        <td>{{ producto.pk }}</td>
+        <td>{{ producto.marca }}</td>
+        <td>{{ producto.presentacion }}</td>
+        <td>{{ producto.precio }}</td>
+        <td style="width: 150px">
+            <button type="button" 
+                    class="btn btn-warning btn-sm js-edit-producto"
+                    data-url="{% url 'productos_edit' producto.pk %}">
+                    Editar
+            </button>
+            <button type="button"
+                    class="btn btn-danger btn-sm js-delete-producto"
+                    data-url="{% url 'productos_delete' producto.pk %}">
+                    Borrar
+            </button>
+        </td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="8" class="text-center bg-warning">No hay productos</td>
+    </tr>
+{% endfor %}

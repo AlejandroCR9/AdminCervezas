@@ -1,0 +1,19 @@
+<form method="post" action="{% url 'productos_create' %}" class="js-producto-create-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <h4 class="modal-title">Agregar nuevo Producto</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        {% include 'productos/form.html' %}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" 
+                data-bs-dismiss="modal" aria-label="Close">
+                Cerrar
+        </button>
+        <button type="submit" class="btn btn-success">
+                Agregar Producto
+        </button>
+    </div>
+</form>

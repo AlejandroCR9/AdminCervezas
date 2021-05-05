@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block css %}
+    <!-- Custom styles for this template -->
+    <link href="{% static 'cervezas/css/signin.css' %}" rel="stylesheet">
+{% endblock %}    
+{% block content %}
+<center>
+    <main class="form-signin">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal">Inicar Sesión</h1>
+            {% if form.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <p>Revise el usuario y la contraseña.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            <div class="form-floating">
+                {% render_field form.username class="form-control"  id="floatingInput" %}
+                <label for="floatingInput">{{ form.username.label  }}</label>
+            </div>
+            <br>
+            <div class="form-floating">
+                {% render_field form.password class="form-control" id="floatingPassword" %}
+                <label for="floatingPassword">{{ form.password.label  }}</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" value="login">Iniciar</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+        </form>
+    </main>
+</center>
+
+{% endblock %}

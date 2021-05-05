@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div class="container py-4">
+      <header class="pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          <span class="fs-4">Inicio</span>
+        </a>
+      </header>
+      <div class="row align-items-md-stretch">
+            <!--Empieza item 1-->
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>Productos</h2>
+                    <p>Accede al listado de productos registrados.</p>
+                    <a href="{% url 'productos_list'%}" class="btn btn-primary">
+                        Ir a Productos
+                    </a>
+                </div>
+            </div>
+             <!--Termina item 1-->
+              <!--Empieza item 1-->
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>Catálogos</h2>
+                    <p>Accede al listado de Marcas y Presentaciones registradas.</p>
+                    <a href="{% url 'marcas_list'%}" class="btn btn-primary">
+                        Ir a los catálogos
+                    </a>
+                </div>
+            </div>
+             <!--Termina item 2-->
+      </div>
+  
+      <footer class="pt-3 mt-4 text-muted border-top">
+        &copy; 2021
+      </footer>
+    </div>
+</main>
+{% endblock %}

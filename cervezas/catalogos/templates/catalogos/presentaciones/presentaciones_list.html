@@ -1,0 +1,23 @@
+{% for presentacion in presentaciones %}
+    <tr>
+        <td>{{ presentacion.pk }}</td>
+        <td>{{ presentacion.presentacion }}</td>
+        <td style="width: 150px">
+            <button type="button" 
+                    class="btn btn-warning btn-sm js-edit-presentacion"
+                    data-url="{% url 'presentaciones_edit' presentacion.pk %}">
+                    Editar
+            </button>
+            <button type="button"
+                    class="btn btn-danger btn-sm js-delete-presentacion"
+                    data-url="{% url 'presentaciones_delete' presentacion.pk %}">
+                    Borrar
+            </button>
+        </td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="8" class="text-center bg-warning">No hay presentaciones</td>
+    </tr>
+{% endfor %}
+    

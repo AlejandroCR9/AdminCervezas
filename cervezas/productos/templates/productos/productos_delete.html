@@ -1,0 +1,26 @@
+<form method="post" action="{% url 'productos_delete' producto.pk %}" class="js-producto-delete-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <h5 class="modal-title">Confirma la eliminacion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Peligro!</h4>
+            <p>¿Esta seguro que desea eliminar el producto: <strong>
+                {{producto.marca}} {{producto.presentacion}}</strong> para siempre?</p>
+            <hr>
+            <p class="mb-0">Está acción no se puede deshacer.</p>
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" 
+                data-bs-dismiss="modal">
+            Cerrar
+        </button> 
+        <button type="submit" class="btn btn-danger">
+            Eliminar Producto
+        </button>
+    </div>
+</form>
